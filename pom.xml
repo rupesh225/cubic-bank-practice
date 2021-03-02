@@ -5,7 +5,7 @@
 	<artifactId>online-banking-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
+<!-- test -->
 	<modules>
 		<module>banking-dao</module>
 		<module>banking-service</module>
