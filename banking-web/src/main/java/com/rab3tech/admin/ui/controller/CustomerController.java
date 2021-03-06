@@ -33,11 +33,11 @@ public class CustomerController {
 	   model.addAttribute("customerVOs", customerVOs);
 	   return "admin/customers";
 	}
-		
-	
+
 	@GetMapping("/customers/photo")
 	public void findCustomerPhoto(@RequestParam int cid,HttpServletResponse response) throws IOException {
 	   byte[] photo=customerService.findPhotoByid(cid);
+	   
 	   response.setContentType("image/png");
 	   ServletOutputStream outputStream=response.getOutputStream();
 	   if(photo!=null) {
@@ -67,5 +67,7 @@ public class CustomerController {
 		//redirect to show all the records of the current customer in the database!
 	   return "redirect:/admin/customers";
 	}
+	
+	
 	
 }

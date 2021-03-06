@@ -442,4 +442,49 @@ public class CustomerServiceImpl implements CustomerService {
 		payeeRepository.deleteById(payeeId);
 	}
 
+	
+	
+	@Override
+	public CustomerVO findCustomerByUsername(String username) {
+		Optional<Customer> customer =CustomerRepository.findByEmail(username);
+		   CustomerVO customerVO = null;
+		   if(customer.isPresent()) {
+			   customerVO = new CustomerVO();
+			   Customer customerEntity=customer.get();
+			   customerVO.setId(customerEntity.getId());
+			   customerVO.setName(customerEntity.getName().trim());
+			   customerVO.setEmail(customerEntity.getEmail());
+			   customerVO.setUserid(customerEntity.getEmail());
+			   customerVO.setAddress(customerEntity.getAddress());
+			   customerVO.setMobile(customerEntity.getMobile());
+			   customerVO.setJobTitle(customerEntity.getJobTitle());
+		   }
+		   return customerVO;
+	}
+
+	
+	/**
+	 * code to upload the image
+	 */
+	@Override
+	public void updatePhoto(int cid,byte[] photo) {
+		Optional<Customer> optionalCustomer=customerRepository.findById(cid);
+		
+		if(optionalCustomer.isPresent()) {
+			Customer customer=optionalCustomer.get();
+			customer.setImage(photo);
+		}
+	}
+
+	@Override
+	public void updateCustomerProfile(int cid, String name, String jobTitle) {
+		Optional<Customer> optionalCustomer = customerRepository.findById(cid);
+		if(optionalCustomer.isPresent()) {
+			Customer customer = optionalCustomer.get();
+			customer.setName(name);
+			customer.setJobTitle(jobTitle);
+		}
+	}
+		
+
 }
