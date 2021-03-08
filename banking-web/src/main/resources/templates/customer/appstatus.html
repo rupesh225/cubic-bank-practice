@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Customer App Status!!!!!!!!!!!!!!</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <style>
+<title>Customer App Status!!!!!!!!!!!!!!</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
 .ffooter {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  text-align: center;
-  height: 30px;
-  background-color:#e9ffe7;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: red;
+	color: white;
+	text-align: center;
+	height: 30px;
+	background-color: #e9ffe7;
 }
 </style>
 
- <script type="text/javascript">
+<script type="text/javascript">
  
  
         $(document).ready(function(){
@@ -45,16 +49,30 @@
      				//name: "Rocket!"
      				//status: "Pending from bank"
      				//ucrid: "90234u8hdwtr4236"}
-                 promise.then(response=>{
+                 
+                 
+                 promise.then(response=>{           	 
+                	 
                  	             return response.json();
                  	     }).then(function(data){
-                 	 var pppdata ={name:"Nagendra",email:"929292"};
-                 	 $("#pname").html(data.name);
-                 	 $("#pemail").html(data.email);
-                 	 $("#pmobile").html(data.mobile);
-                 	 $("#paccountType").html(data.accType);
-                 	 $("#pstatus").html(data.status);
-                 	 $("#pdtable").show()
+                 	    	 
+                 	    	 
+                 	    		var pppdata ={name:"Nagendra",email:"929292"};
+       	                 	 
+       	                 	 
+	       	                 	 $("#pname").html(data.name);
+	       	                 	 $("#pemail").html(data.email);
+	       	                 	 $("#pmobile").html(data.mobile);
+	       	                 	 $("#paccountType").html(data.accType);
+	       	                 	 $("#pstatus").html(data.status);
+	       	                 	 $("#pdtable").show();
+
+                 	 
+                 }).catch(error => {
+                	 	messageClear();
+         	    		 $("#stat").html("N/A!");
+         	    		$("#errorMessage").html("User Not Found!");
+         	    		
                  });
         		
         	});
@@ -63,77 +81,83 @@
  
        function messageClear(){
     	   var searchText=$("#appIdEmail").val();
-    	   if(searchText.length==0){
-    		   $("#pdtable").hide()
-    	   }
+    	//   if(searchText.length==0){
+    		   $("#pdtable").hide();
+    	   //}
     	   $("#errorMessage").html("");
+    	   $("#stat").html("");
        }
  </script>
 
 </head>
 <body>
-<header style="height: 30px;background-color: maroon;">
-</header>
-<div class="container">
-  <h2>Application Status Page
-  </h2>
-  <img th:src="@{/images/status.jpg}" alt="Logo" style="height: 140px"/>
-   <br/>
-   <span th:utext="${error}" style="color: red;font-size: 18px;font-weight: bold;"  id="errorMessage"></span>
-      <span th:utext="${message}" style="color: blue;font-size: 18px;font-weight: bold;"></span>
-  <div style="width: 70%">
-   <form th:action="@{/customer/fappstatus}" method="GET"   id="appStatusForm"  name="appStatusForm">
-    <div class="form-group">
-      <label for="username">Enter App Ref or Email:</label>
-      <input type="text" style="width: 60%;" class="form-control"  name="appIdEmail"  id="appIdEmail" 
-       placeholder="Enter username" onkeyup="messageClear();">
-    </div>
-  
-    <button type="button" class="btn btn-primary"  id="checkStatus">Check Status</button>
-    
-    <button type="reset" class="btn btn-danger">Reset</button>
-    
-    <a th:href="@{/customer/login}"> 
-    <button type="button" class="btn btn-warning">Login</button>
-    </a>
-  </form>
-  </div>
-  <hr/>
-  <p>
-  <img th:src="@{/images/result.jpg}" style="height: 65px;"/>
-  Current App Status:</p>            
-  <table class="table table-bordered" style="width: 60%;display:none;" id="pdtable">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th id="pname">Nagendra</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Email</td>
-        <td id="pemail">doe@gmail.com</td>
-      </tr>
-      <tr>
-        <td>Mobile</td>
-        <td id="pmobile">2342342</td>
-      </tr>
-      <tr>
-        <td>A/C Type</td>
-        <td id="paccountType">Saving!!!!!!!!</td>
-      </tr>
-      
-      <tr>
-        <td>Status</td>
-        <td  id="pstatus">Approved</td>
-      </tr>
-      
-    </tbody>
-  </table>
-  
-</div>
-<footer  class="ffooter">
-</footer>
+	<header style="height: 30px; background-color: maroon;"> </header>
+	<div class="container">
+		<h2>Application Status Page</h2>
+		<img th:src="@{/images/status.jpg}" alt="Logo" style="height: 140px" />
+		<br /> <span th:utext="${error}"
+			style="color: red; font-size: 18px; font-weight: bold;"
+			id="errorMessage"></span>
+			<span th:utext="${message}"
+			style="color: blue; font-size: 18px; font-weight: bold;"></span>
+		<div style="width: 70%">
+			<form th:action="@{/customer/fappstatus}" method="GET"
+				id="appStatusForm" name="appStatusForm">
+				<div class="form-group">
+					<label for="username">Enter App Ref or Email:</label> <input
+						type="text" style="width: 60%;" class="form-control"
+						name="appIdEmail" id="appIdEmail" placeholder="Enter username"
+						onkeyup="messageClear();">
+				</div>
+
+				<button type="button" class="btn btn-primary" id="checkStatus" onclick="messageClear();">Check
+					Status</button>
+
+				<button type="reset" class="btn btn-danger" onclick="messageClear();">Reset</button>
+
+				<a th:href="@{/customer/login}">
+					<button type="button" class="btn btn-warning">Login</button>
+				</a>
+			</form>
+		</div>
+		<hr />
+		<h4>
+			<img th:src="@{/images/result.jpg}" style="height: 65px;" /> Current
+			App Status:
+			<p id="stat" style="color: red;"></p>
+		</h4>
+		<table class="table table-bordered" style="width: 60%; display: none;"
+			id="pdtable">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th id="pname"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Email</td>
+					<td id="pemail"></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td id="pmobile"></td>
+				</tr>
+				<tr>
+					<td>A/C Type</td>
+					<td id="paccountType"></td>
+				</tr>
+
+				<tr>
+					<td>Status</td>
+					<td id="pstatus"></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+	<footer class="ffooter"> </footer>
 
 </body>
 </html>

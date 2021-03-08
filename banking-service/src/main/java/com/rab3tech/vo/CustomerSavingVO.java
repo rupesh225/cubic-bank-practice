@@ -30,7 +30,9 @@ public class CustomerSavingVO {
 	private Date doa;
 	private String appref;
 	
-	public CustomerSavingVO() {}
+	public CustomerSavingVO() {
+		
+	}
 	
 	public CustomerSavingVO(int csaid, String name, String email, String mobile, String location, String accType,
 			String status, String ucrid, Date doa, String appref) {

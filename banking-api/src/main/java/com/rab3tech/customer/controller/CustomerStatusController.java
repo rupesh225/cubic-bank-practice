@@ -19,6 +19,8 @@ import com.rab3tech.vo.CustomerSavingVO;
 import com.rab3tech.vo.PayeeApproveVO;
 import com.rab3tech.vo.UpdatePayeeVO;
 
+import io.swagger.models.Model;
+
 
 
 
@@ -55,8 +57,11 @@ public class CustomerStatusController {
 	
 	@GetMapping("/customer/app/status")
 	public CustomerSavingVO findCustomerStatus(@RequestParam String searchText){
-		CustomerSavingVO customerSavingVO =customerEnquiryService.findAppStatus(searchText);
+		CustomerSavingVO customerSavingVO = customerEnquiryService.findAppStatus(searchText);
+	
 		return customerSavingVO;
+		
+		
 	}
 	
 	@PostMapping("/customer/payee/approve")
