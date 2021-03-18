@@ -97,7 +97,4 @@ public class SecurityQuestions {
 		return "SecurityQuestions [qid=" + qid + ", questions=" + questions
 				+ "]";
 	}
-	
-	
-	
 }

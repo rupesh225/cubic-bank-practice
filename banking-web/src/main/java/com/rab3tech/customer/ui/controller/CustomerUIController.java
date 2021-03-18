@@ -194,6 +194,8 @@ public class CustomerUIController {
 	
 	@PostMapping("/customer/changePassword")
 	public String saveCustomerQuestions(@ModelAttribute ChangePasswordVO changePasswordVO, Model model,HttpSession session) {
+		
+		
 		LoginVO  loginVO2=(LoginVO)session.getAttribute("userSessionVO");
 		String loginid=loginVO2.getUsername();
 		changePasswordVO.setLoginid(loginid);

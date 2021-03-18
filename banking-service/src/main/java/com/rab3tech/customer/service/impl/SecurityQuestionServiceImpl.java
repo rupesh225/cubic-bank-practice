@@ -67,18 +67,48 @@ public class SecurityQuestionServiceImpl implements SecurityQuestionService {
 	@Override
 	public List<SecurityQuestionsVO>  findAll(){
 		List<SecurityQuestions>  securityQuestions=questionsRepository.findAll();
+		
 		List<SecurityQuestionsVO> questionsVOs=new ArrayList<>();
+		
 		for(SecurityQuestions questions:securityQuestions) {
 			SecurityQuestionsVO questionsVO=new SecurityQuestionsVO();
 			BeanUtils.copyProperties(questions, questionsVO);
 			questionsVOs.add(questionsVO);
 		}
+		
 		return questionsVOs;
 		/*return securityQuestions.stream().map(tt->{
 			SecurityQuestionsVO questionsVO=new SecurityQuestionsVO();
 			BeanUtils.copyProperties(tt, questionsVO);
 			return questionsVO;
 		}).collect(Collectors.toList());*/
+	}
+
+
+	@Override
+	public List<String> findQuestionByEmail(String email) {
+		
+		List<CustomerQuestionAnswer> customerQuestionAnswer = customerQuestionsAnsRepository.findQuestionAnswer(email);
+		List<String> questions = new ArrayList<String>() ;
+		
+		for (CustomerQuestionAnswer cqa : customerQuestionAnswer) {
+			questions.add(cqa.getQuestion());
+		}
+		
+		return questions;
+	}
+
+
+	@Override
+	public List<String> findAnswerByEmail(String email) {
+		List<CustomerQuestionAnswer> customerQuestionAnswer = customerQuestionsAnsRepository.findQuestionAnswer(email);
+		List<String> answers = new ArrayList<String>() ;
+		
+		for (CustomerQuestionAnswer cqa : customerQuestionAnswer) {
+			answers.add(cqa.getAnswer());
+		}
+		
+		return answers;
 	}
 	
 }

@@ -25,6 +25,7 @@ import com.rab3tech.dao.entity.Role;
 import com.rab3tech.vo.ChangePasswordRequestVO;
 import com.rab3tech.vo.ChangePasswordVO;
 import com.rab3tech.vo.LoginVO;
+import com.rab3tech.vo.ResetPasswordVO;
 import com.rab3tech.vo.RoleVO;
 import com.rab3tech.vo.RolesUpdateRequest;
 
@@ -64,6 +65,16 @@ public class LoginServiceImpl implements LoginService {
 	public void changePassword(ChangePasswordVO changePasswordVO) {
 		String encodedPassword=bCryptPasswordEncoder.encode(changePasswordVO.getNewPassword());
 		Login  login=loginRepository.findByLoginid(changePasswordVO.getLoginid()).get();
+		login.setPassword(encodedPassword);
+		login.setLlt(new Timestamp(new Date().getTime()));
+		//loginRepository.save(login);
+	}
+	
+	@Override
+	public void resetPassword(ResetPasswordVO resetPasswordVO) {
+		
+		String encodedPassword=bCryptPasswordEncoder.encode(resetPasswordVO.getNewPassword());
+		Login  login=loginRepository.findByLoginid(resetPasswordVO.getEmail()).get();
 		login.setPassword(encodedPassword);
 		login.setLlt(new Timestamp(new Date().getTime()));
 		//loginRepository.save(login);

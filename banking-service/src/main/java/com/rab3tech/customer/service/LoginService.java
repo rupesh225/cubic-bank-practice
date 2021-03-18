@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.rab3tech.vo.ChangePasswordRequestVO;
 import com.rab3tech.vo.ChangePasswordVO;
 import com.rab3tech.vo.LoginVO;
+import com.rab3tech.vo.ResetPasswordVO;
 import com.rab3tech.vo.RoleVO;
 import com.rab3tech.vo.RolesUpdateRequest;
 
@@ -28,6 +29,8 @@ public interface LoginService {
 	List<RoleVO> findRolesByUserid(String userid);
 
 	String updateCustomerRoles(RolesUpdateRequest rolesUpdateRequest);
+
+	void resetPassword(ResetPasswordVO resetPasswordVO);
 	
 
 }
