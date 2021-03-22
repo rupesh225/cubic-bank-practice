@@ -85,10 +85,39 @@
   <a th:href="@{/customer/sendAccountStmt}">
 <button type="button" class="btn btn-primary">Send Email</button>
 </a>
+
+      <button type="button" class="btn btn-primary">Export as PDF</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal">Show Chart</button>
   </div>
 </div>
 <footer  class="ffooter">
 </footer>
+
+
+<!-- The Modal -->
+<div class="modal" id="chartModal">
+    <div class="modal-dialog" style="width: 900px;">
+        <div class="modal-content" style="width: 900px;">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Customer Transaction!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <img th:src="@{/customer/barChart}" alt="page"/>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
