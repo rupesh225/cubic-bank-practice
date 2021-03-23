@@ -86,8 +86,12 @@
 <button type="button" class="btn btn-primary">Send Email</button>
 </a>
 
-      <button type="button" class="btn btn-primary">Export as PDF</button>
+<!--      <button type="button" class="btn btn-primary">Export as PDF</button>-->
+      <button class="btn btn-warning"><a th:href="@{/customer/exportTransactionsToPDF}"> Export as PDF </a></button>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal">Show Chart</button>
+
+
+
   </div>
 </div>
 <footer  class="ffooter">
